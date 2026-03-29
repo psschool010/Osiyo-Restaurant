@@ -7,32 +7,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --gold: #C9A84C;
-    --gold-light: #E8D5A3;
-    --gold-dark: #8B6914;
-    --deep: #1A1208;
-    --warm: #2D1E0A;
-    --cream: #F9F3E8;
-    --cream-dark: #EDE3CE;
-    --text: #3D2B0F;
-    --text-muted: #7A6040;
-    --ruby: #8B1A1A;
-    --font-display: 'Playfair Display', serif;
-    --font-body: 'Jost', sans-serif;
+    --gold: #C9A84C; --gold-light: #E8D5A3; --gold-dark: #8B6914;
+    --deep: #1A1208; --warm: #2D1E0A; --cream: #F9F3E8;
+    --cream-dark: #EDE3CE; --text: #3D2B0F; --text-muted: #7A6040;
+    --font-display: 'Playfair Display', serif; --font-body: 'Jost', sans-serif;
   }
-
   html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); background: var(--deep); color: var(--cream); overflow-x: hidden; }
 
-  body {
-    font-family: var(--font-body);
-    background: var(--deep);
-    color: var(--cream);
-    overflow-x: hidden;
-  }
-
-  /* ---- NAV ---- */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; justify-content: space-between; align-items: center;
@@ -41,506 +24,137 @@
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(201,168,76,0.2);
   }
-  .nav-logo {
-    font-family: var(--font-display);
-    font-size: 1.4rem;
-    color: var(--gold);
-    letter-spacing: 0.05em;
-    text-decoration: none;
-  }
-  
-  .nav-container {
-    display: flex;
-    align-items: center;
-    gap: 3rem;
-  }
-
+  .nav-logo { font-family: var(--font-display); font-size: 1.4rem; color: var(--gold); letter-spacing: 0.05em; text-decoration: none; }
+  .nav-container { display: flex; align-items: center; gap: 3rem; }
   .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a {
-    text-decoration: none;
-    font-size: 0.8rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--cream-dark);
-    transition: color 0.2s;
-  }
+  .nav-links a { text-decoration: none; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--cream-dark); transition: color 0.2s; }
   .nav-links a:hover { color: var(--gold); }
+  .nav-extras { display: flex; align-items: center; gap: 1.5rem; padding-left: 1.5rem; border-left: 1px solid rgba(201,168,76,0.3); }
+  .lang-switch { display: flex; gap: 0.5rem; font-size: 0.7rem; letter-spacing: 0.1em; color: var(--text-muted); align-items: center; }
+  .lang-switch span.lang-btn { cursor: pointer; transition: color 0.2s; padding: 2px 4px; border-radius: 2px; }
+  .lang-switch span.lang-btn:hover { color: var(--gold); }
+  .lang-switch span.lang-btn.active { color: var(--gold); font-weight: 500; }
+  .lang-switch span.sep { color: rgba(201,168,76,0.3); }
+  .social-link { color: var(--cream-dark); text-decoration: none; font-size: 1.1rem; transition: transform 0.3s, color 0.3s; display: flex; align-items: center; }
+  .social-link:hover { color: var(--gold); transform: translateY(-2px); }
 
-  .nav-extras {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    padding-left: 1.5rem;
-    border-left: 1px solid rgba(201,168,76,0.3);
-  }
-
-  .lang-switch {
-    display: flex;
-    gap: 0.5rem;
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    color: var(--text-muted);
-  }
-
-  .lang-switch span {
-    cursor: pointer;
-    transition: color 0.2s;
-  }
-
-  .lang-switch span:hover, .lang-switch span.active {
-    color: var(--gold);
-  }
-
-  .social-link {
-    color: var(--cream-dark);
-    text-decoration: none;
-    font-size: 1.1rem;
-    transition: transform 0.3s, color 0.3s;
-    display: flex;
-    align-items: center;
-  }
-
-  .social-link:hover {
-    color: var(--gold);
-    transform: translateY(-2px);
-  }
-
-  /* ---- HERO ---- */
   .hero {
-    min-height: 100vh;
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-    text-align: center;
-    position: relative;
-    padding: 6rem 2rem 4rem;
-    background:
-      radial-gradient(ellipse at 50% 60%, rgba(139,105,20,0.18) 0%, transparent 65%),
-      repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 40px,
-        rgba(201,168,76,0.03) 40px,
-        rgba(201,168,76,0.03) 41px
-      ),
-      var(--deep);
+    min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center; position: relative; padding: 6rem 2rem 4rem;
+    background: radial-gradient(ellipse at 50% 60%, rgba(139,105,20,0.18) 0%, transparent 65%),
+      repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(201,168,76,0.03) 40px, rgba(201,168,76,0.03) 41px), var(--deep);
   }
   .hero::before {
-    content: '';
-    position: absolute; inset: 0;
+    content: ''; position: absolute; inset: 0;
     background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23C9A84C' stroke-width='0.4' opacity='0.12'%3E%3Cpolygon points='30,4 56,18 56,42 30,56 4,42 4,18'/%3E%3Cpolygon points='30,14 46,23 46,37 30,46 14,37 14,23'/%3E%3C/g%3E%3C/svg%3E");
     pointer-events: none;
   }
-  .hero-ornament {
-    font-size: 1.5rem;
-    color: var(--gold);
-    letter-spacing: 0.4em;
-    margin-bottom: 1.5rem;
-    opacity: 0.8;
-  }
-  .hero h1 {
-    font-family: var(--font-display);
-    font-size: clamp(3rem, 8vw, 6.5rem);
-    font-weight: 700;
-    line-height: 1.05;
-    color: var(--cream);
-    margin-bottom: 0.3rem;
-  }
-  .hero h1 em {
-    font-style: italic;
-    color: var(--gold);
-  }
-  .hero-sub {
-    font-size: 0.75rem;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: var(--gold-light);
-    margin-bottom: 1.5rem;
-  }
-  .hero-divider {
-    width: 80px; height: 1px;
-    background: linear-gradient(to right, transparent, var(--gold), transparent);
-    margin: 1.5rem auto;
-  }
-  .hero-desc {
-    max-width: 480px;
-    font-size: 1rem;
-    font-weight: 300;
-    color: var(--cream-dark);
-    line-height: 1.8;
-    margin-bottom: 2.5rem;
-  }
-  .hero-cta {
-    display: inline-block;
-    padding: 0.9rem 2.8rem;
-    border: 1px solid var(--gold);
-    color: var(--gold);
-    text-decoration: none;
-    font-size: 0.75rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    transition: background 0.3s, color 0.3s;
-  }
-  .hero-cta:hover {
-    background: var(--gold);
-    color: var(--deep);
-  }
-  .scroll-hint {
-    position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
-    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--text-muted);
-    display: flex; flex-direction: column; align-items: center; gap: 6px;
-  }
-  .scroll-hint::after {
-    content: '';
-    display: block;
-    width: 1px; height: 40px;
-    background: linear-gradient(to bottom, var(--gold), transparent);
-  }
+  .hero-ornament { font-size: 1.5rem; color: var(--gold); letter-spacing: 0.4em; margin-bottom: 1.5rem; opacity: 0.8; }
+  .hero h1 { font-family: var(--font-display); font-size: clamp(3rem, 8vw, 6.5rem); font-weight: 700; line-height: 1.05; color: var(--cream); margin-bottom: 0.3rem; }
+  .hero h1 em { font-style: italic; color: var(--gold); }
+  .hero-sub { font-size: 0.75rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 1.5rem; }
+  .hero-divider { width: 80px; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); margin: 1.5rem auto; }
+  .hero-desc { max-width: 480px; font-size: 1rem; font-weight: 300; color: var(--cream-dark); line-height: 1.8; margin-bottom: 2.5rem; }
+  .hero-cta { display: inline-block; padding: 0.9rem 2.8rem; border: 1px solid var(--gold); color: var(--gold); text-decoration: none; font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase; transition: background 0.3s, color 0.3s; }
+  .hero-cta:hover { background: var(--gold); color: var(--deep); }
+  .scroll-hint { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .scroll-hint::after { content: ''; display: block; width: 1px; height: 40px; background: linear-gradient(to bottom, var(--gold), transparent); }
 
-  /* ---- ABOUT ---- */
   .section { padding: 6rem 2rem; }
   .container { max-width: 1100px; margin: 0 auto; }
-
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: center;
-  }
-  .section-tag {
-    font-size: 0.68rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 1rem;
-  }
-  .section-title {
-    font-family: var(--font-display);
-    font-size: clamp(2rem, 4vw, 2.8rem);
-    font-weight: 400;
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
-    color: var(--cream);
-  }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .section-tag { font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+  .section-title { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 400; line-height: 1.2; margin-bottom: 1.5rem; color: var(--cream); }
   .section-title em { font-style: italic; color: var(--gold); }
-  .section-text {
-    font-size: 0.95rem;
-    font-weight: 300;
-    line-height: 1.9;
-    color: var(--cream-dark);
-  }
+  .section-text { font-size: 0.95rem; font-weight: 300; line-height: 1.9; color: var(--cream-dark); }
   .section-text p { margin-bottom: 1rem; }
+  .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
+  .stat-box { border-left: 2px solid var(--gold); padding-left: 1.2rem; }
+  .stat-num { font-family: var(--font-display); font-size: 2.4rem; color: var(--gold); line-height: 1; }
+  .stat-label { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.3rem; }
+  .about-visual { position: relative; }
+  .about-img-frame { aspect-ratio: 4/5; background: var(--warm); border: 1px solid rgba(201,168,76,0.3); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+  .about-img-frame::before { content: ''; position: absolute; inset: 16px; border: 1px solid rgba(201,168,76,0.15); pointer-events: none; z-index: 1; }
+  .plate-icon { font-size: 5rem; opacity: 0.15; }
+  .about-badge { position: absolute; bottom: -1rem; right: -1rem; width: 120px; height: 120px; background: var(--gold); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+  .about-badge .badge-num { font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: var(--deep); line-height: 1; }
+  .about-badge .badge-label { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--deep); opacity: 0.8; }
 
-  .about-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    margin-top: 2.5rem;
-  }
-  .stat-box {
-    border-left: 2px solid var(--gold);
-    padding-left: 1.2rem;
-  }
-  .stat-num {
-    font-family: var(--font-display);
-    font-size: 2.4rem;
-    color: var(--gold);
-    line-height: 1;
-  }
-  .stat-label {
-    font-size: 0.72rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-top: 0.3rem;
-  }
-
-  .about-visual {
-    position: relative;
-  }
-  .about-img-frame {
-    aspect-ratio: 4/5;
-    background: var(--warm);
-    border: 1px solid rgba(201,168,76,0.3);
-    position: relative;
-    overflow: hidden;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .about-img-frame::before {
-    content: '';
-    position: absolute; inset: 16px;
-    border: 1px solid rgba(201,168,76,0.15);
-    pointer-events: none;
-    z-index: 1;
-  }
-  .plate-icon {
-    font-size: 5rem;
-    opacity: 0.15;
-  }
-  .about-badge {
-    position: absolute;
-    bottom: -1rem; right: -1rem;
-    width: 120px; height: 120px;
-    background: var(--gold);
-    border-radius: 50%;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    text-align: center;
-  }
-  .about-badge .badge-num {
-    font-family: var(--font-display);
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--deep);
-    line-height: 1;
-  }
-  .about-badge .badge-label {
-    font-size: 0.6rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--deep);
-    opacity: 0.8;
-  }
-
-  /* ---- MENU ---- */
-  .menu-section {
-    background: var(--warm);
-    border-top: 1px solid rgba(201,168,76,0.15);
-    border-bottom: 1px solid rgba(201,168,76,0.15);
-  }
+  .menu-section { background: var(--warm); border-top: 1px solid rgba(201,168,76,0.15); border-bottom: 1px solid rgba(201,168,76,0.15); }
   .menu-header { text-align: center; margin-bottom: 4rem; }
-  .menu-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-  }
-  .menu-item {
-    background: rgba(255,255,255,0.02);
-    padding: 2.5rem 2rem;
-    border: 1px solid rgba(201,168,76,0.08);
-    transition: background 0.3s, border-color 0.3s;
-    position: relative;
-    overflow: hidden;
-  }
-  .menu-item:hover {
-    background: rgba(201,168,76,0.06);
-    border-color: rgba(201,168,76,0.25);
-  }
-  .menu-item::after {
-    content: '';
-    position: absolute; bottom: 0; left: 0;
-    width: 0; height: 2px;
-    background: var(--gold);
-    transition: width 0.3s;
-  }
+  .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .menu-item { background: rgba(255,255,255,0.02); padding: 2.5rem 2rem; border: 1px solid rgba(201,168,76,0.08); transition: background 0.3s, border-color 0.3s; position: relative; overflow: hidden; }
+  .menu-item:hover { background: rgba(201,168,76,0.06); border-color: rgba(201,168,76,0.25); }
+  .menu-item::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--gold); transition: width 0.3s; }
   .menu-item:hover::after { width: 100%; }
   .menu-item-icon { font-size: 2rem; margin-bottom: 1rem; }
-  .menu-item-name {
-    font-family: var(--font-display);
-    font-size: 1.3rem;
-    color: var(--cream);
-    margin-bottom: 0.6rem;
-  }
-  .menu-item-desc {
-    font-size: 0.85rem;
-    font-weight: 300;
-    color: var(--text-muted);
-    line-height: 1.7;
-  }
-  .menu-tag {
-    display: inline-block;
-    margin-top: 1rem;
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
-    border: 1px solid rgba(201,168,76,0.3);
-    padding: 0.2rem 0.7rem;
-  }
+  .menu-item-name { font-family: var(--font-display); font-size: 1.3rem; color: var(--cream); margin-bottom: 0.6rem; }
+  .menu-item-desc { font-size: 0.85rem; font-weight: 300; color: var(--text-muted); line-height: 1.7; }
+  .menu-tag { display: inline-block; margin-top: 1rem; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,168,76,0.3); padding: 0.2rem 0.7rem; }
 
-  /* ---- EXPERIENCE ---- */
-  .experience-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 4rem;
-    align-items: start;
-  }
+  .experience-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 4rem; align-items: start; }
   .features-list { list-style: none; margin-top: 2rem; }
-  .features-list li {
-    display: flex; align-items: flex-start; gap: 1rem;
-    padding: 1rem 0;
-    border-bottom: 1px solid rgba(201,168,76,0.1);
-  }
+  .features-list li { display: flex; align-items: flex-start; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid rgba(201,168,76,0.1); }
   .features-list li:last-child { border-bottom: none; }
-  .feature-icon {
-    width: 32px; height: 32px; flex-shrink: 0;
-    border: 1px solid var(--gold);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.9rem;
-    color: var(--gold);
-    margin-top: 2px;
-  }
-  .feature-title {
-    font-weight: 500;
-    font-size: 0.9rem;
-    color: var(--cream);
-    margin-bottom: 0.3rem;
-  }
-  .feature-desc {
-    font-size: 0.82rem;
-    font-weight: 300;
-    color: var(--text-muted);
-    line-height: 1.6;
-  }
-
-  .drinks-block {
-    background: rgba(201,168,76,0.05);
-    border: 1px solid rgba(201,168,76,0.2);
-    padding: 2.5rem;
-  }
-  .drinks-title {
-    font-family: var(--font-display);
-    font-size: 1.6rem;
-    color: var(--gold);
-    margin-bottom: 1.5rem;
-  }
-  .drink-item {
-    display: flex; justify-content: space-between;
-    padding: 0.7rem 0;
-    border-bottom: 1px dashed rgba(201,168,76,0.15);
-    font-size: 0.88rem;
-  }
+  .feature-icon { width: 32px; height: 32px; flex-shrink: 0; border: 1px solid var(--gold); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; color: var(--gold); margin-top: 2px; }
+  .feature-title { font-weight: 500; font-size: 0.9rem; color: var(--cream); margin-bottom: 0.3rem; }
+  .feature-desc { font-size: 0.82rem; font-weight: 300; color: var(--text-muted); line-height: 1.6; }
+  .drinks-block { background: rgba(201,168,76,0.05); border: 1px solid rgba(201,168,76,0.2); padding: 2.5rem; }
+  .drinks-title { font-family: var(--font-display); font-size: 1.6rem; color: var(--gold); margin-bottom: 1.5rem; }
+  .drink-item { display: flex; justify-content: space-between; padding: 0.7rem 0; border-bottom: 1px dashed rgba(201,168,76,0.15); font-size: 0.88rem; }
   .drink-item:last-child { border-bottom: none; }
   .drink-name { color: var(--cream-dark); }
-  .drink-type {
-    font-size: 0.72rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--gold);
-    opacity: 0.7;
-  }
+  .drink-type { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); opacity: 0.7; }
 
-  /* ---- LOCATION ---- */
   .location-section { text-align: center; }
-  .location-card {
-    max-width: 600px; margin: 3rem auto 0;
-    border: 1px solid rgba(201,168,76,0.3);
-    padding: 3rem;
-    position: relative;
-  }
-  .location-card::before, .location-card::after {
-    content: '✦';
-    position: absolute;
-    color: var(--gold); font-size: 1.2rem;
-  }
+  .location-card { max-width: 600px; margin: 3rem auto 0; border: 1px solid rgba(201,168,76,0.3); padding: 3rem; position: relative; }
+  .location-card::before, .location-card::after { content: '✦'; position: absolute; color: var(--gold); font-size: 1.2rem; }
   .location-card::before { top: -0.7rem; left: 50%; transform: translateX(-50%); }
   .location-card::after { bottom: -0.7rem; left: 50%; transform: translateX(-50%); }
-
   .location-icon { font-size: 2.5rem; margin-bottom: 1.2rem; }
-  .location-address {
-    font-family: var(--font-display);
-    font-size: 1.1rem;
-    font-style: italic;
-    color: var(--cream);
-    line-height: 1.6;
-    margin-bottom: 2rem;
-  }
-  .location-details {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    text-align: left;
-    margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(201,168,76,0.2);
-  }
-  .location-detail-label {
-    font-size: 0.68rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 0.4rem;
-  }
-  .location-detail-val {
-    font-size: 0.9rem;
-    font-weight: 300;
-    color: var(--cream-dark);
-  }
+  .location-address { font-family: var(--font-display); font-size: 1.1rem; font-style: italic; color: var(--cream); line-height: 1.6; margin-bottom: 2rem; }
+  .location-details { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; text-align: left; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(201,168,76,0.2); }
+  .location-detail-label { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+  .location-detail-val { font-size: 0.9rem; font-weight: 300; color: var(--cream-dark); }
 
-  /* ---- FOOTER ---- */
-  footer {
-    background: #0F0B05;
-    padding: 3rem 2rem;
-    text-align: center;
-    border-top: 1px solid rgba(201,168,76,0.15);
-  }
-  .footer-logo {
-    font-family: var(--font-display);
-    font-size: 1.8rem;
-    color: var(--gold);
-    margin-bottom: 0.5rem;
-  }
-  .footer-sub {
-    font-size: 0.72rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 2rem;
-  }
-  .footer-copy {
-    font-size: 0.75rem;
-    color: rgba(122,96,64,0.5);
-  }
-
-  /* ---- RESPONSIVE ---- */
-  @media (max-width: 1024px) {
-    .nav-container { gap: 1.5rem; }
-  }
+  footer { background: #0F0B05; padding: 3rem 2rem; text-align: center; border-top: 1px solid rgba(201,168,76,0.15); }
+  .footer-logo { font-family: var(--font-display); font-size: 1.8rem; color: var(--gold); margin-bottom: 0.5rem; }
+  .footer-sub { font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; }
+  .footer-copy { font-size: 0.75rem; color: rgba(122,96,64,0.5); }
 
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
-    .nav-links, .nav-extras { display: none; } /* Hiding extras on mobile for a cleaner look, can be moved to a hamburger menu later */
+    .nav-links, .nav-extras { display: none; }
     .about-grid, .experience-grid { grid-template-columns: 1fr; gap: 3rem; }
     .menu-grid { grid-template-columns: 1fr; }
     .location-details { grid-template-columns: 1fr; }
     .about-stats { grid-template-columns: 1fr 1fr; }
     .about-visual { display: none; }
   }
-
-  /* Fade-in animation */
-  .fade-up {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-  .fade-up.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
 </style>
 </head>
 <body>
 
 <nav>
   <a href="#" class="nav-logo">Osiyo Grand</a>
-  
   <div class="nav-container">
     <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#menu">Menu</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#location">Find Us</a></li>
+      <li><a href="#about" data-i18n="nav_about">About</a></li>
+      <li><a href="#menu" data-i18n="nav_menu">Menu</a></li>
+      <li><a href="#experience" data-i18n="nav_experience">Experience</a></li>
+      <li><a href="#location" data-i18n="nav_location">Find Us</a></li>
     </ul>
-
     <div class="nav-extras">
       <div class="lang-switch">
-        <span class="active">UZ</span>
-        <span>|</span>
-        <span>RU</span>
-        <span>|</span>
-        <span>EN</span>
+        <span class="lang-btn" data-lang="uz">UZ</span>
+        <span class="sep">|</span>
+        <span class="lang-btn" data-lang="ru">RU</span>
+        <span class="sep">|</span>
+        <span class="lang-btn active" data-lang="en">EN</span>
       </div>
-
-      <a href="https://www.instagram.com/osiyorestaurant/" target="_blank" class="social-link" title="Follow us on Instagram">
+      <a href="https://www.instagram.com/osiyorestaurant/" target="_blank" class="social-link" title="Instagram">
         <svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
           <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
         </svg>
@@ -552,49 +166,34 @@
 <section class="hero">
   <div class="hero-ornament">✦   ✦   ✦</div>
   <h1><em>Osiyo</em> Grand</h1>
-  <p class="hero-sub">Osiyo To'yxonasi — Jizzakh, Uzbekistan</p>
+  <p class="hero-sub" data-i18n="hero_sub">Osiyo To'yxonasi — Jizzakh, Uzbekistan</p>
   <div class="hero-divider"></div>
-  <p class="hero-desc">Where the soul of Uzbekistan meets the table — fragrant pilaf, hand-crafted kebabs, and a warmth that feels like home.</p>
-  <a href="#menu" class="hero-cta">Explore the Menu</a>
-  <div class="scroll-hint">Scroll</div>
+  <p class="hero-desc" data-i18n="hero_desc">Where the soul of Uzbekistan meets the table — fragrant pilaf, hand-crafted kebabs, and a warmth that feels like home.</p>
+  <a href="#menu" class="hero-cta" data-i18n="hero_cta">Explore the Menu</a>
+  <div class="scroll-hint" data-i18n="scroll">Scroll</div>
 </section>
 
 <section class="section" id="about">
   <div class="container">
     <div class="about-grid">
       <div class="fade-up">
-        <p class="section-tag">Our Story</p>
-        <h2 class="section-title">A <em>celebration</em> of Uzbek heritage</h2>
+        <p class="section-tag" data-i18n="about_tag">Our Story</p>
+        <h2 class="section-title"><span data-i18n="about_title_1">A </span><em data-i18n="about_title_em">celebration</em><span data-i18n="about_title_2"> of Uzbek heritage</span></h2>
         <div class="section-text">
-          <p>Osiyo Grand is more than a restaurant — it is a gathering place where generations of Uzbek culinary tradition come alive. Every dish is prepared with time-honored recipes, the finest local ingredients, and an unwavering commitment to authenticity.</p>
-          <p>From intimate family dinners to grand banquets, we craft every experience with the same devotion: to honour the flavours, hospitality, and culture of Uzbekistan.</p>
+          <p data-i18n="about_p1">Osiyo Grand is more than a restaurant — it is a gathering place where generations of Uzbek culinary tradition come alive. Every dish is prepared with time-honored recipes, the finest local ingredients, and an unwavering commitment to authenticity.</p>
+          <p data-i18n="about_p2">From intimate family dinners to grand banquets, we craft every experience with the same devotion: to honour the flavours, hospitality, and culture of Uzbekistan.</p>
         </div>
         <div class="about-stats">
-          <div class="stat-box">
-            <div class="stat-num">5.0</div>
-            <div class="stat-label">Star Rating</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-num">★★★</div>
-            <div class="stat-label">Local Favourite</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-num">100%</div>
-            <div class="stat-label">Authentic Recipes</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-num">∞</div>
-            <div class="stat-label">Warm Hospitality</div>
-          </div>
+          <div class="stat-box"><div class="stat-num">5.0</div><div class="stat-label" data-i18n="stat_rating">Star Rating</div></div>
+          <div class="stat-box"><div class="stat-num">★★★</div><div class="stat-label" data-i18n="stat_fav">Local Favourite</div></div>
+          <div class="stat-box"><div class="stat-num">100%</div><div class="stat-label" data-i18n="stat_recipes">Authentic Recipes</div></div>
+          <div class="stat-box"><div class="stat-num">∞</div><div class="stat-label" data-i18n="stat_hospitality">Warm Hospitality</div></div>
         </div>
       </div>
       <div class="about-visual fade-up">
         <div class="about-img-frame">
           <div class="plate-icon">🍽️</div>
-          <div class="about-badge">
-            <span class="badge-num">5.0</span>
-            <span class="badge-label">Rating</span>
-          </div>
+          <div class="about-badge"><span class="badge-num">5.0</span><span class="badge-label" data-i18n="badge_rating">Rating</span></div>
         </div>
       </div>
     </div>
@@ -604,45 +203,45 @@
 <section class="section menu-section" id="menu">
   <div class="container">
     <div class="menu-header fade-up">
-      <p class="section-tag">Culinary Highlights</p>
-      <h2 class="section-title">Dishes that <em>tell a story</em></h2>
+      <p class="section-tag" data-i18n="menu_tag">Culinary Highlights</p>
+      <h2 class="section-title"><span data-i18n="menu_title_1">Dishes that </span><em data-i18n="menu_title_em">tell a story</em></h2>
     </div>
     <div class="menu-grid">
       <div class="menu-item fade-up">
         <div class="menu-item-icon">🍚</div>
-        <div class="menu-item-name">Fragrant Pilaf (Osh)</div>
-        <div class="menu-item-desc">The crown jewel of Uzbek cuisine — golden rice slow-cooked with lamb, carrots, and a blend of spices passed down through generations.</div>
-        <span class="menu-tag">Signature</span>
+        <div class="menu-item-name" data-i18n="dish1_name">Fragrant Pilaf (Osh)</div>
+        <div class="menu-item-desc" data-i18n="dish1_desc">The crown jewel of Uzbek cuisine — golden rice slow-cooked with lamb, carrots, and a blend of spices passed down through generations.</div>
+        <span class="menu-tag" data-i18n="dish1_tag">Signature</span>
       </div>
       <div class="menu-item fade-up">
         <div class="menu-item-icon">🍢</div>
-        <div class="menu-item-name">Charcoal Kebabs</div>
-        <div class="menu-item-desc">Tender skewers of seasoned lamb and beef, grilled over hot coals to perfection. Served with flatbread and fresh herb accompaniments.</div>
-        <span class="menu-tag">Grilled</span>
+        <div class="menu-item-name" data-i18n="dish2_name">Charcoal Kebabs</div>
+        <div class="menu-item-desc" data-i18n="dish2_desc">Tender skewers of seasoned lamb and beef, grilled over hot coals to perfection. Served with flatbread and fresh herb accompaniments.</div>
+        <span class="menu-tag" data-i18n="dish2_tag">Grilled</span>
       </div>
       <div class="menu-item fade-up">
         <div class="menu-item-icon">🫕</div>
-        <div class="menu-item-name">Hearty Soups</div>
-        <div class="menu-item-desc">From rich shurpa to warming lagman — our soups are made from slow-simmered broths with fresh vegetables and hand-pulled noodles.</div>
-        <span class="menu-tag">Traditional</span>
+        <div class="menu-item-name" data-i18n="dish3_name">Hearty Soups</div>
+        <div class="menu-item-desc" data-i18n="dish3_desc">From rich shurpa to warming lagman — our soups are made from slow-simmered broths with fresh vegetables and hand-pulled noodles.</div>
+        <span class="menu-tag" data-i18n="dish3_tag">Traditional</span>
       </div>
       <div class="menu-item fade-up">
         <div class="menu-item-icon">🥩</div>
-        <div class="menu-item-name">Specialty Steaks</div>
-        <div class="menu-item-desc">Premium cuts prepared to order, seasoned with Uzbek spice blends for a unique twist on a classic favourite.</div>
-        <span class="menu-tag">Chef's Special</span>
+        <div class="menu-item-name" data-i18n="dish4_name">Specialty Steaks</div>
+        <div class="menu-item-desc" data-i18n="dish4_desc">Premium cuts prepared to order, seasoned with Uzbek spice blends for a unique twist on a classic favourite.</div>
+        <span class="menu-tag" data-i18n="dish4_tag">Chef's Special</span>
       </div>
       <div class="menu-item fade-up">
         <div class="menu-item-icon">🫓</div>
-        <div class="menu-item-name">Fresh Flatbreads</div>
-        <div class="menu-item-desc">Stone-baked non — the quintessential Uzbek bread — warm and fragrant from the tandoor, perfect with every meal.</div>
-        <span class="menu-tag">Baked Daily</span>
+        <div class="menu-item-name" data-i18n="dish5_name">Fresh Flatbreads</div>
+        <div class="menu-item-desc" data-i18n="dish5_desc">Stone-baked non — the quintessential Uzbek bread — warm and fragrant from the tandoor, perfect with every meal.</div>
+        <span class="menu-tag" data-i18n="dish5_tag">Baked Daily</span>
       </div>
       <div class="menu-item fade-up">
         <div class="menu-item-icon">🍱</div>
-        <div class="menu-item-name">Seasonal Salads</div>
-        <div class="menu-item-desc">Crisp, vibrant salads made from locally sourced produce, celebrating the freshness of each season.</div>
-        <span class="menu-tag">Fresh & Local</span>
+        <div class="menu-item-name" data-i18n="dish6_name">Seasonal Salads</div>
+        <div class="menu-item-desc" data-i18n="dish6_desc">Crisp, vibrant salads made from locally sourced produce, celebrating the freshness of each season.</div>
+        <span class="menu-tag" data-i18n="dish6_tag">Fresh & Local</span>
       </div>
     </div>
   </div>
@@ -652,63 +251,24 @@
   <div class="container">
     <div class="experience-grid">
       <div class="fade-up">
-        <p class="section-tag">The Osiyo Experience</p>
-        <h2 class="section-title">A place for every <em>occasion</em></h2>
+        <p class="section-tag" data-i18n="exp_tag">The Osiyo Experience</p>
+        <h2 class="section-title"><span data-i18n="exp_title_1">A place for every </span><em data-i18n="exp_title_em">occasion</em></h2>
         <ul class="features-list">
-          <li>
-            <div class="feature-icon">🎉</div>
-            <div>
-              <div class="feature-title">Banquets & Celebrations</div>
-              <div class="feature-desc">Spacious halls suited for weddings, corporate gatherings, and large family celebrations with full catering service.</div>
-            </div>
-          </li>
-          <li>
-            <div class="feature-icon">👨‍👩‍👧</div>
-            <div>
-              <div class="feature-title">Family Dining</div>
-              <div class="feature-desc">A welcoming atmosphere where families gather to share great food and create lasting memories.</div>
-            </div>
-          </li>
-          <li>
-            <div class="feature-icon">🏛️</div>
-            <div>
-              <div class="feature-title">Uzbek Cultural Décor</div>
-              <div class="feature-desc">Every corner reflects the rich artistic heritage of Uzbekistan — hand-crafted details and vibrant traditional motifs.</div>
-            </div>
-          </li>
-          <li>
-            <div class="feature-icon">⭐</div>
-            <div>
-              <div class="feature-title">5-Star Service</div>
-              <div class="feature-desc">Our team is dedicated to making every guest feel like an honoured visitor, with attentive and warm hospitality.</div>
-            </div>
-          </li>
+          <li><div class="feature-icon">🎉</div><div><div class="feature-title" data-i18n="feat1_title">Banquets & Celebrations</div><div class="feature-desc" data-i18n="feat1_desc">Spacious halls suited for weddings, corporate gatherings, and large family celebrations with full catering service.</div></div></li>
+          <li><div class="feature-icon">👨‍👩‍👧</div><div><div class="feature-title" data-i18n="feat2_title">Family Dining</div><div class="feature-desc" data-i18n="feat2_desc">A welcoming atmosphere where families gather to share great food and create lasting memories.</div></div></li>
+          <li><div class="feature-icon">🏛️</div><div><div class="feature-title" data-i18n="feat3_title">Uzbek Cultural Décor</div><div class="feature-desc" data-i18n="feat3_desc">Every corner reflects the rich artistic heritage of Uzbekistan — hand-crafted details and vibrant traditional motifs.</div></div></li>
+          <li><div class="feature-icon">⭐</div><div><div class="feature-title" data-i18n="feat4_title">5-Star Service</div><div class="feature-desc" data-i18n="feat4_desc">Our team is dedicated to making every guest feel like an honoured visitor, with attentive and warm hospitality.</div></div></li>
         </ul>
       </div>
       <div class="fade-up">
         <div class="drinks-block">
-          <div class="drinks-title">The Bar</div>
-          <p style="font-size:0.85rem;font-weight:300;color:var(--text-muted);margin-bottom:1.5rem;line-height:1.7;">Complement your meal with a selection of fine beverages — from morning coffees to evening cocktails.</p>
-          <div class="drink-item">
-            <span class="drink-name">Cappuccino</span>
-            <span class="drink-type">Coffee</span>
-          </div>
-          <div class="drink-item">
-            <span class="drink-name">Mojito</span>
-            <span class="drink-type">Cocktail</span>
-          </div>
-          <div class="drink-item">
-            <span class="drink-name">Fresh Juices</span>
-            <span class="drink-type">Non-Alcoholic</span>
-          </div>
-          <div class="drink-item">
-            <span class="drink-name">Green Tea</span>
-            <span class="drink-type">Traditional</span>
-          </div>
-          <div class="drink-item">
-            <span class="drink-name">Signature Cocktails</span>
-            <span class="drink-type">Specialty</span>
-          </div>
+          <div class="drinks-title" data-i18n="bar_title">The Bar</div>
+          <p style="font-size:0.85rem;font-weight:300;color:var(--text-muted);margin-bottom:1.5rem;line-height:1.7;" data-i18n="bar_desc">Complement your meal with a selection of fine beverages — from morning coffees to evening cocktails.</p>
+          <div class="drink-item"><span class="drink-name" data-i18n="drink1">Cappuccino</span><span class="drink-type" data-i18n="drink1_type">Coffee</span></div>
+          <div class="drink-item"><span class="drink-name" data-i18n="drink2">Mojito</span><span class="drink-type" data-i18n="drink2_type">Cocktail</span></div>
+          <div class="drink-item"><span class="drink-name" data-i18n="drink3">Fresh Juices</span><span class="drink-type" data-i18n="drink3_type">Non-Alcoholic</span></div>
+          <div class="drink-item"><span class="drink-name" data-i18n="drink4">Green Tea</span><span class="drink-type" data-i18n="drink4_type">Traditional</span></div>
+          <div class="drink-item"><span class="drink-name" data-i18n="drink5">Signature Cocktails</span><span class="drink-type" data-i18n="drink5_type">Specialty</span></div>
         </div>
       </div>
     </div>
@@ -717,33 +277,17 @@
 
 <section class="section location-section" id="location">
   <div class="container">
-    <p class="section-tag fade-up">Find Us</p>
-    <h2 class="section-title fade-up">Come <em>visit us</em> in Jizzakh</h2>
+    <p class="section-tag fade-up" data-i18n="loc_tag">Find Us</p>
+    <h2 class="section-title fade-up"><span data-i18n="loc_title_1">Come </span><em data-i18n="loc_title_em">visit us</em><span data-i18n="loc_title_2"> in Jizzakh</span></h2>
     <div class="location-card fade-up">
       <div class="location-icon">📍</div>
-      <div class="location-address">
-        Zargarlik Street 20A<br>
-        Zargarlik Mahalla<br>
-        Jizzakh, Uzbekistan
-      </div>
-      <a href="https://maps.google.com/?q=Zargarlik+Street+20A+Jizzakh+Uzbekistan" target="_blank" class="hero-cta" style="font-size:0.7rem;">Open in Maps</a>
+      <div class="location-address">Zargarlik Street 20A<br>Zargarlik Mahalla<br>Jizzakh, Uzbekistan</div>
+      <a href="https://maps.google.com/?q=Zargarlik+Street+20A+Jizzakh+Uzbekistan" target="_blank" class="hero-cta" style="font-size:0.7rem;" data-i18n="maps_btn">Open in Maps</a>
       <div class="location-details">
-        <div>
-          <div class="location-detail-label">Phone</div>
-          <div class="location-detail-val">Available on arrival</div>
-        </div>
-        <div>
-          <div class="location-detail-label">Hours</div>
-          <div class="location-detail-val">Open daily</div>
-        </div>
-        <div>
-          <div class="location-detail-label">Reservations</div>
-          <div class="location-detail-val">Walk-ins welcome</div>
-        </div>
-        <div>
-          <div class="location-detail-label">Events</div>
-          <div class="location-detail-val">Banquets available</div>
-        </div>
+        <div><div class="location-detail-label" data-i18n="loc_phone_label">Phone</div><div class="location-detail-val" data-i18n="loc_phone_val">Available on arrival</div></div>
+        <div><div class="location-detail-label" data-i18n="loc_hours_label">Hours</div><div class="location-detail-val" data-i18n="loc_hours_val">Open daily</div></div>
+        <div><div class="location-detail-label" data-i18n="loc_res_label">Reservations</div><div class="location-detail-val" data-i18n="loc_res_val">Walk-ins welcome</div></div>
+        <div><div class="location-detail-label" data-i18n="loc_events_label">Events</div><div class="location-detail-val" data-i18n="loc_events_val">Banquets available</div></div>
       </div>
     </div>
   </div>
@@ -751,19 +295,130 @@
 
 <footer>
   <div class="footer-logo">Osiyo Grand</div>
-  <div class="footer-sub">Osiyo To'yxonasi — Jizzakh, Uzbekistan</div>
-  <div class="footer-copy">© 2026 Osiyo Grand. All rights reserved.</div>
+  <div class="footer-sub" data-i18n="footer_sub">Osiyo To'yxonasi — Jizzakh, Uzbekistan</div>
+  <div class="footer-copy" data-i18n="footer_copy">© 2026 Osiyo Grand. All rights reserved.</div>
 </footer>
 
 <script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 80);
-      }
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+const translations = {
+  en: {
+    nav_about: "About", nav_menu: "Menu", nav_experience: "Experience", nav_location: "Find Us",
+    hero_sub: "Osiyo To'yxonasi — Jizzakh, Uzbekistan",
+    hero_desc: "Where the soul of Uzbekistan meets the table — fragrant pilaf, hand-crafted kebabs, and a warmth that feels like home.",
+    hero_cta: "Explore the Menu", scroll: "Scroll",
+    about_tag: "Our Story", about_title_1: "A ", about_title_em: "celebration", about_title_2: " of Uzbek heritage",
+    about_p1: "Osiyo Grand is more than a restaurant — it is a gathering place where generations of Uzbek culinary tradition come alive. Every dish is prepared with time-honored recipes, the finest local ingredients, and an unwavering commitment to authenticity.",
+    about_p2: "From intimate family dinners to grand banquets, we craft every experience with the same devotion: to honour the flavours, hospitality, and culture of Uzbekistan.",
+    stat_rating: "Star Rating", stat_fav: "Local Favourite", stat_recipes: "Authentic Recipes", stat_hospitality: "Warm Hospitality", badge_rating: "Rating",
+    menu_tag: "Culinary Highlights", menu_title_1: "Dishes that ", menu_title_em: "tell a story",
+    dish1_name: "Fragrant Pilaf (Osh)", dish1_desc: "The crown jewel of Uzbek cuisine — golden rice slow-cooked with lamb, carrots, and a blend of spices passed down through generations.", dish1_tag: "Signature",
+    dish2_name: "Charcoal Kebabs", dish2_desc: "Tender skewers of seasoned lamb and beef, grilled over hot coals to perfection. Served with flatbread and fresh herb accompaniments.", dish2_tag: "Grilled",
+    dish3_name: "Hearty Soups", dish3_desc: "From rich shurpa to warming lagman — our soups are made from slow-simmered broths with fresh vegetables and hand-pulled noodles.", dish3_tag: "Traditional",
+    dish4_name: "Specialty Steaks", dish4_desc: "Premium cuts prepared to order, seasoned with Uzbek spice blends for a unique twist on a classic favourite.", dish4_tag: "Chef's Special",
+    dish5_name: "Fresh Flatbreads", dish5_desc: "Stone-baked non — the quintessential Uzbek bread — warm and fragrant from the tandoor, perfect with every meal.", dish5_tag: "Baked Daily",
+    dish6_name: "Seasonal Salads", dish6_desc: "Crisp, vibrant salads made from locally sourced produce, celebrating the freshness of each season.", dish6_tag: "Fresh & Local",
+    exp_tag: "The Osiyo Experience", exp_title_1: "A place for every ", exp_title_em: "occasion",
+    feat1_title: "Banquets & Celebrations", feat1_desc: "Spacious halls suited for weddings, corporate gatherings, and large family celebrations with full catering service.",
+    feat2_title: "Family Dining", feat2_desc: "A welcoming atmosphere where families gather to share great food and create lasting memories.",
+    feat3_title: "Uzbek Cultural Décor", feat3_desc: "Every corner reflects the rich artistic heritage of Uzbekistan — hand-crafted details and vibrant traditional motifs.",
+    feat4_title: "5-Star Service", feat4_desc: "Our team is dedicated to making every guest feel like an honoured visitor, with attentive and warm hospitality.",
+    bar_title: "The Bar", bar_desc: "Complement your meal with a selection of fine beverages — from morning coffees to evening cocktails.",
+    drink1: "Cappuccino", drink1_type: "Coffee", drink2: "Mojito", drink2_type: "Cocktail",
+    drink3: "Fresh Juices", drink3_type: "Non-Alcoholic", drink4: "Green Tea", drink4_type: "Traditional", drink5: "Signature Cocktails", drink5_type: "Specialty",
+    loc_tag: "Find Us", loc_title_1: "Come ", loc_title_em: "visit us", loc_title_2: " in Jizzakh",
+    maps_btn: "Open in Maps",
+    loc_phone_label: "Phone", loc_phone_val: "Available on arrival", loc_hours_label: "Hours", loc_hours_val: "Open daily",
+    loc_res_label: "Reservations", loc_res_val: "Walk-ins welcome", loc_events_label: "Events", loc_events_val: "Banquets available",
+    footer_sub: "Osiyo To'yxonasi — Jizzakh, Uzbekistan", footer_copy: "© 2026 Osiyo Grand. All rights reserved."
+  },
+  uz: {
+    nav_about: "Biz haqimizda", nav_menu: "Menyu", nav_experience: "Tajriba", nav_location: "Bizni toping",
+    hero_sub: "Osiyo To'yxonasi — Jizzax, O'zbekiston",
+    hero_desc: "O'zbekiston ruhi dasturxonda — xushbo'y osh, qo'lda tayyorlangan kaboblar va uyga o'xshash iliqlik.",
+    hero_cta: "Menyuni ko'rish", scroll: "Pastga",
+    about_tag: "Bizning tarix", about_title_1: "", about_title_em: "O'zbek merosini", about_title_2: " nishonlash",
+    about_p1: "Osiyo Grand — bu oddiy restoran emas, balki avloddan avlodga o'tib kelgan o'zbek oshpazchilik an'analari tirilgan joy. Har bir taom eng yaxshi mahalliy mahsulotlar va chin ko'ngildan tayyorlanadi.",
+    about_p2: "Oilaviy kichik ziyofatlardan tortib ulkan to'ylargacha — biz har bir mehmonni O'zbekiston ta'mi, mehmondo'stligi va madaniyatini his qilishi uchun harakat qilamiz.",
+    stat_rating: "Yulduz reytingi", stat_fav: "Mahalliy sevimli", stat_recipes: "Haqiqiy retseptlar", stat_hospitality: "Iliq mehmondo'stlik", badge_rating: "Reyting",
+    menu_tag: "Oshxona durdonalari", menu_title_1: "", menu_title_em: "Hikoya so'ylaydigan", menu_title_1_after: " taomlar",
+    dish1_name: "Xushbo'y Osh", dish1_desc: "O'zbek oshpazchiligining toji — qo'zi go'shti, sabzi va avloddan avlodga o'tib kelgan ziravorlar bilan sekin pishirilgan oltin guruch.", dish1_tag: "Imzo taom",
+    dish2_name: "Ko'mir Kabob", dish2_desc: "Ziravorlangan qo'zi va mol go'shtidan tayyorlangan shashliklar ko'mir ustida mukammal qovuriladi. Non va yangi o'tlar bilan beriladi.", dish2_tag: "Grill",
+    dish3_name: "To'yimli Sho'rvalar", dish3_desc: "Boy shurpadan issiq lagmangacha — sho'rvalarimiz sekin qaynatilgan bulyon, yangi sabzavotlar va qo'lda cho'zilgan erişte bilan tayyorlanadi.", dish3_tag: "An'anaviy",
+    dish4_name: "Maxsus Steyklar", dish4_desc: "Buyurtmaga ko'ra tayyorlangan premium go'sht, o'zbek ziravorlari bilan klassik taomga yangi o'ziga xoslik qo'shadi.", dish4_tag: "Oshpaz tavsiyasi",
+    dish5_name: "Yangi Non", dish5_desc: "Tandirda pishirilgan non — o'zbek nonining timsoli — issiq va xushbo'y, har qanday taom bilan mukammal.", dish5_tag: "Har kuni yangi",
+    dish6_name: "Mavsumiy Salatlar", dish6_desc: "Mahalliy mahsulotlardan tayyorlangan yangi, rang-barang salatlar — har bir mavsumning yangiligini nishonlaydi.", dish6_tag: "Yangi & Mahalliy",
+    exp_tag: "Osiyo tajribasi", exp_title_1: "Har qanday ", exp_title_em: "munosabat", exp_title_2: " uchun joy",
+    feat1_title: "To'y va Bayramlar", feat1_desc: "To'liq ovqatlantirish xizmati bilan to'ylar, korporativ yig'ilishlar va katta oilaviy bayramlar uchun keng zallar.",
+    feat2_title: "Oilaviy Ovqatlanish", feat2_desc: "Oilalar birlashib, ajoyib taomlarni tatib ko'radigan va unutilmas xotiralar yaratadigan qulay muhit.",
+    feat3_title: "O'zbek Madaniy Bezagi", feat3_desc: "Har bir burchak O'zbekistonning boy badiiy merosini aks ettiradi — qo'lda ishlangan tafsilotlar va rang-barang milliy naqshlar.",
+    feat4_title: "5 Yulduzli Xizmat", feat4_desc: "Jamoamiz har bir mehmonni hurmatli mehmon sifatida his qilishi uchun e'tiborli va iliq mehmondo'stlik ko'rsatadi.",
+    bar_title: "Bar", bar_desc: "Taomingizni tanlangan ichimliklar bilan to'ldiring — ertalabki qahvalardan kechki kokteyllargacha.",
+    drink1: "Kapuchino", drink1_type: "Qahva", drink2: "Mojito", drink2_type: "Kokteyl",
+    drink3: "Yangi Sharbatlar", drink3_type: "Alkogolsiz", drink4: "Yashil Choy", drink4_type: "An'anaviy", drink5: "Maxsus Kokteylar", drink5_type: "Imzo",
+    loc_tag: "Bizni toping", loc_title_1: "Jizzaxda ", loc_title_em: "bizga tashrif", loc_title_2: " buyuring",
+    maps_btn: "Xaritada ochish",
+    loc_phone_label: "Telefon", loc_phone_val: "Kelganda mavjud", loc_hours_label: "Ish vaqti", loc_hours_val: "Har kuni ochiq",
+    loc_res_label: "Bron", loc_res_val: "Bevosita kelish mumkin", loc_events_label: "Tadbirlar", loc_events_val: "To'ylar mavjud",
+    footer_sub: "Osiyo To'yxonasi — Jizzax, O'zbekiston", footer_copy: "© 2026 Osiyo Grand. Barcha huquqlar himoyalangan."
+  },
+  ru: {
+    nav_about: "О нас", nav_menu: "Меню", nav_experience: "Опыт", nav_location: "Найти нас",
+    hero_sub: "Ресторан Осиё — Джизак, Узбекистан",
+    hero_desc: "Там, где душа Узбекистана встречается со столом — ароматный плов, шашлыки ручной работы и тепло, похожее на домашнее.",
+    hero_cta: "Изучить меню", scroll: "Вниз",
+    about_tag: "Наша история", about_title_1: "", about_title_em: "Праздник", about_title_2: " узбекского наследия",
+    about_p1: "Osiyo Grand — это больше, чем ресторан. Это место, где оживают поколения узбекской кулинарной традиции. Каждое блюдо готовится по проверенным временем рецептам из лучших местных ингредиентов.",
+    about_p2: "От уютных семейных ужинов до грандиозных банкетов — мы создаём каждый опыт с одной целью: подарить вкус, гостеприимство и культуру Узбекистана.",
+    stat_rating: "Звёздный рейтинг", stat_fav: "Любимое место", stat_recipes: "Аутентичные рецепты", stat_hospitality: "Тёплое гостеприимство", badge_rating: "Рейтинг",
+    menu_tag: "Кулинарные шедевры", menu_title_1: "Блюда, которые ", menu_title_em: "рассказывают историю",
+    dish1_name: "Ароматный Плов (Ош)", dish1_desc: "Жемчужина узбекской кухни — золотистый рис, томлённый с бараниной, морковью и смесью специй, передаваемых из поколения в поколение.", dish1_tag: "Фирменное",
+    dish2_name: "Шашлык на углях", dish2_desc: "Нежные шампуры из маринованной баранины и говядины, приготовленные на раскалённых углях. Подаются с лепёшкой и свежей зеленью.", dish2_tag: "Гриль",
+    dish3_name: "Сытные супы", dish3_desc: "От наваристой шурпы до согревающего лагмана — наши супы готовятся на медленном огне с овощами и домашней лапшой.", dish3_tag: "Традиционное",
+    dish4_name: "Фирменные стейки", dish4_desc: "Премиальные куски, приготовленные на заказ и приправленные узбекскими специями для уникального вкуса.", dish4_tag: "От шефа",
+    dish5_name: "Свежие лепёшки", dish5_desc: "Выпеченный в тандыре нон — квинтэссенция узбекского хлеба — тёплый и ароматный, идеален к любому блюду.", dish5_tag: "Свежая выпечка",
+    dish6_name: "Сезонные салаты", dish6_desc: "Свежие, яркие салаты из местных продуктов, прославляющие свежесть каждого сезона.", dish6_tag: "Свежее & Местное",
+    exp_tag: "Опыт Осиё", exp_title_1: "Место для любого ", exp_title_em: "случая",
+    feat1_title: "Банкеты и торжества", feat1_desc: "Просторные залы для свадеб, корпоративных встреч и больших семейных праздников с полным кейтерингом.",
+    feat2_title: "Семейный ужин", feat2_desc: "Уютная атмосфера, где семьи собираются за вкусной едой и создают незабываемые воспоминания.",
+    feat3_title: "Узбекский декор", feat3_desc: "Каждый уголок отражает богатое художественное наследие Узбекистана — ручная работа и яркие национальные орнаменты.",
+    feat4_title: "Сервис 5 звёзд", feat4_desc: "Наша команда стремится к тому, чтобы каждый гость чувствовал себя почётным гостем с вниманием и теплотой.",
+    bar_title: "Бар", bar_desc: "Дополните трапезу изысканными напитками — от утреннего кофе до вечерних коктейлей.",
+    drink1: "Капучино", drink1_type: "Кофе", drink2: "Мохито", drink2_type: "Коктейль",
+    drink3: "Свежие соки", drink3_type: "Безалкогольное", drink4: "Зелёный чай", drink4_type: "Традиционное", drink5: "Фирменные коктейли", drink5_type: "Специальное",
+    loc_tag: "Найти нас", loc_title_1: "Приходите ", loc_title_em: "к нам", loc_title_2: " в Джизак",
+    maps_btn: "Открыть на карте",
+    loc_phone_label: "Телефон", loc_phone_val: "Доступен при визите", loc_hours_label: "Часы работы", loc_hours_val: "Открыто ежедневно",
+    loc_res_label: "Резервация", loc_res_val: "Без брони", loc_events_label: "Мероприятия", loc_events_val: "Банкеты доступны",
+    footer_sub: "Ресторан Осиё — Джизак, Узбекистан", footer_copy: "© 2026 Osiyo Grand. Все права защищены."
+  }
+};
+
+let currentLang = 'en';
+
+function applyLanguage(lang) {
+  currentLang = lang;
+  const t = translations[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.textContent = t[key];
+  });
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+  });
+  document.documentElement.lang = lang;
+}
+
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => applyLanguage(btn.getAttribute('data-lang')));
+});
+
+// Scroll fade-in
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) setTimeout(() => entry.target.classList.add('visible'), i * 80);
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
