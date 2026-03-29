@@ -1,1 +1,707 @@
-<!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <title>Osiyo Restaurant</title>\n    <style>\n        .language-selector {\n            display: flex;\n            margin: 10px 0;\n        }\n        .language-selector button {\n            margin-right: 5px;\n            padding: 10px;\n            background-color: #f0f0f0;\n            border: 1px solid #ccc;\n            cursor: pointer;\n        }\n    </style>\n</head>\n<body>\n    <nav>\n        <h1>Welcome to Osiyo Restaurant</h1>\n        <div class="language-selector">\n            <button onclick="switchLanguage('uz')">Uzbek</button>\n            <button onclick="switchLanguage('en')">English</button>\n            <button onclick="switchLanguage('ru')">Russian</button>\n        </div>\n    </nav>\n    <script>\n        function switchLanguage(lang) {\n            alert('Language switched to ' + lang); // Placeholder for language switching logic\n            // Implement the language switching functionality here\n        }\n    </script>\n</body>\n</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Osiyo Grand — Authentic Uzbek Cuisine</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8D5A3;
+    --gold-dark: #8B6914;
+    --deep: #1A1208;
+    --warm: #2D1E0A;
+    --cream: #F9F3E8;
+    --cream-dark: #EDE3CE;
+    --text: #3D2B0F;
+    --text-muted: #7A6040;
+    --ruby: #8B1A1A;
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Jost', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--deep);
+    color: var(--cream);
+    overflow-x: hidden;
+  }
+
+  /* ---- NAV ---- */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 3rem;
+    background: rgba(26,18,8,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--cream-dark);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ---- HERO ---- */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center;
+    position: relative;
+    padding: 6rem 2rem 4rem;
+    background:
+      radial-gradient(ellipse at 50% 60%, rgba(139,105,20,0.18) 0%, transparent 65%),
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 40px,
+        rgba(201,168,76,0.03) 40px,
+        rgba(201,168,76,0.03) 41px
+      ),
+      var(--deep);
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23C9A84C' stroke-width='0.4' opacity='0.12'%3E%3Cpolygon points='30,4 56,18 56,42 30,56 4,42 4,18'/%3E%3Cpolygon points='30,14 46,23 46,37 30,46 14,37 14,23'/%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  .hero-ornament {
+    font-size: 1.5rem;
+    color: var(--gold);
+    letter-spacing: 0.4em;
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-weight: 700;
+    line-height: 1.05;
+    color: var(--cream);
+    margin-bottom: 0.3rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .hero-sub {
+    font-size: 0.75rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 1.5rem;
+  }
+  .hero-divider {
+    width: 80px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 1.5rem auto;
+  }
+  .hero-desc {
+    max-width: 480px;
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--cream-dark);
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+  .hero-cta {
+    display: inline-block;
+    padding: 0.9rem 2.8rem;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    transition: background 0.3s, color 0.3s;
+  }
+  .hero-cta:hover {
+    background: var(--gold);
+    color: var(--deep);
+  }
+  .scroll-hint {
+    position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--text-muted);
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+  }
+  .scroll-hint::after {
+    content: '';
+    display: block;
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+  }
+
+  /* ---- ABOUT ---- */
+  .section { padding: 6rem 2rem; }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .section-tag {
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: var(--cream);
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+  .section-text {
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.9;
+    color: var(--cream-dark);
+  }
+  .section-text p { margin-bottom: 1rem; }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+  .stat-box {
+    border-left: 2px solid var(--gold);
+    padding-left: 1.2rem;
+  }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 0.3rem;
+  }
+
+  .about-visual {
+    position: relative;
+  }
+  .about-img-frame {
+    aspect-ratio: 4/5;
+    background: var(--warm);
+    border: 1px solid rgba(201,168,76,0.3);
+    position: relative;
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .about-img-frame::before {
+    content: '';
+    position: absolute; inset: 16px;
+    border: 1px solid rgba(201,168,76,0.15);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .plate-icon {
+    font-size: 5rem;
+    opacity: 0.15;
+  }
+  .about-badge {
+    position: absolute;
+    bottom: -1rem; right: -1rem;
+    width: 120px; height: 120px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+  }
+  .about-badge .badge-num {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--deep);
+    line-height: 1;
+  }
+  .about-badge .badge-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--deep);
+    opacity: 0.8;
+  }
+
+  /* ---- MENU ---- */
+  .menu-section {
+    background: var(--warm);
+    border-top: 1px solid rgba(201,168,76,0.15);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+  .menu-header { text-align: center; margin-bottom: 4rem; }
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .menu-item {
+    background: rgba(255,255,255,0.02);
+    padding: 2.5rem 2rem;
+    border: 1px solid rgba(201,168,76,0.08);
+    transition: background 0.3s, border-color 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .menu-item:hover {
+    background: rgba(201,168,76,0.06);
+    border-color: rgba(201,168,76,0.25);
+  }
+  .menu-item::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0;
+    width: 0; height: 2px;
+    background: var(--gold);
+    transition: width 0.3s;
+  }
+  .menu-item:hover::after { width: 100%; }
+  .menu-item-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .menu-item-name {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--cream);
+    margin-bottom: 0.6rem;
+  }
+  .menu-item-desc {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+  .menu-tag {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 0.2rem 0.7rem;
+  }
+
+  /* ---- EXPERIENCE ---- */
+  .experience-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
+    align-items: start;
+  }
+  .features-list { list-style: none; margin-top: 2rem; }
+  .features-list li {
+    display: flex; align-items: flex-start; gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+  }
+  .features-list li:last-child { border-bottom: none; }
+  .feature-icon {
+    width: 32px; height: 32px; flex-shrink: 0;
+    border: 1px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.9rem;
+    color: var(--gold);
+    margin-top: 2px;
+  }
+  .feature-title {
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--cream);
+    margin-bottom: 0.3rem;
+  }
+  .feature-desc {
+    font-size: 0.82rem;
+    font-weight: 300;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .drinks-block {
+    background: rgba(201,168,76,0.05);
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 2.5rem;
+  }
+  .drinks-title {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+  .drink-item {
+    display: flex; justify-content: space-between;
+    padding: 0.7rem 0;
+    border-bottom: 1px dashed rgba(201,168,76,0.15);
+    font-size: 0.88rem;
+  }
+  .drink-item:last-child { border-bottom: none; }
+  .drink-name { color: var(--cream-dark); }
+  .drink-type {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.7;
+  }
+
+  /* ---- LOCATION ---- */
+  .location-section { text-align: center; }
+  .location-card {
+    max-width: 600px; margin: 3rem auto 0;
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 3rem;
+    position: relative;
+  }
+  .location-card::before, .location-card::after {
+    content: '✦';
+    position: absolute;
+    color: var(--gold); font-size: 1.2rem;
+  }
+  .location-card::before { top: -0.7rem; left: 50%; transform: translateX(-50%); }
+  .location-card::after { bottom: -0.7rem; left: 50%; transform: translateX(-50%); }
+
+  .location-icon { font-size: 2.5rem; margin-bottom: 1.2rem; }
+  .location-address {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--cream);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+  .location-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    text-align: left;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(201,168,76,0.2);
+  }
+  .location-detail-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+  .location-detail-val {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--cream-dark);
+  }
+
+  /* ---- FOOTER ---- */
+  footer {
+    background: #0F0B05;
+    padding: 3rem 2rem;
+    text-align: center;
+    border-top: 1px solid rgba(201,168,76,0.15);
+  }
+  .footer-logo {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+  .footer-sub {
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+  }
+  .footer-copy {
+    font-size: 0.75rem;
+    color: rgba(122,96,64,0.5);
+  }
+
+  /* ---- RESPONSIVE ---- */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .about-grid, .experience-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .menu-grid { grid-template-columns: 1fr; }
+    .location-details { grid-template-columns: 1fr; }
+    .about-stats { grid-template-columns: 1fr 1fr; }
+    .about-visual { display: none; }
+  }
+
+  /* Fade-in animation */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Osiyo Grand</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#location">Find Us</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+  <h1><em>Osiyo</em> Grand</h1>
+  <p class="hero-sub">Osiyo To'yxonasi &mdash; Jizzakh, Uzbekistan</p>
+  <div class="hero-divider"></div>
+  <p class="hero-desc">Where the soul of Uzbekistan meets the table — fragrant pilaf, hand-crafted kebabs, and a warmth that feels like home.</p>
+  <a href="#menu" class="hero-cta">Explore the Menu</a>
+  <div class="scroll-hint">Scroll</div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="fade-up">
+        <p class="section-tag">Our Story</p>
+        <h2 class="section-title">A <em>celebration</em> of Uzbek heritage</h2>
+        <div class="section-text">
+          <p>Osiyo Grand is more than a restaurant — it is a gathering place where generations of Uzbek culinary tradition come alive. Every dish is prepared with time-honored recipes, the finest local ingredients, and an unwavering commitment to authenticity.</p>
+          <p>From intimate family dinners to grand banquets, we craft every experience with the same devotion: to honour the flavours, hospitality, and culture of Uzbekistan.</p>
+        </div>
+        <div class="about-stats">
+          <div class="stat-box">
+            <div class="stat-num">5.0</div>
+            <div class="stat-label">Star Rating</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">★★★</div>
+            <div class="stat-label">Local Favourite</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">100%</div>
+            <div class="stat-label">Authentic Recipes</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">∞</div>
+            <div class="stat-label">Warm Hospitality</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual fade-up">
+        <div class="about-img-frame">
+          <div class="plate-icon">🍽️</div>
+          <div class="about-badge">
+            <span class="badge-num">5.0</span>
+            <span class="badge-label">Rating</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="section menu-section" id="menu">
+  <div class="container">
+    <div class="menu-header fade-up">
+      <p class="section-tag">Culinary Highlights</p>
+      <h2 class="section-title">Dishes that <em>tell a story</em></h2>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-item fade-up">
+        <div class="menu-item-icon">🍚</div>
+        <div class="menu-item-name">Fragrant Pilaf (Osh)</div>
+        <div class="menu-item-desc">The crown jewel of Uzbek cuisine — golden rice slow-cooked with lamb, carrots, and a blend of spices passed down through generations.</div>
+        <span class="menu-tag">Signature</span>
+      </div>
+      <div class="menu-item fade-up">
+        <div class="menu-item-icon">🍢</div>
+        <div class="menu-item-name">Charcoal Kebabs</div>
+        <div class="menu-item-desc">Tender skewers of seasoned lamb and beef, grilled over hot coals to perfection. Served with flatbread and fresh herb accompaniments.</div>
+        <span class="menu-tag">Grilled</span>
+      </div>
+      <div class="menu-item fade-up">
+        <div class="menu-item-icon">🫕</div>
+        <div class="menu-item-name">Hearty Soups</div>
+        <div class="menu-item-desc">From rich shurpa to warming lagman — our soups are made from slow-simmered broths with fresh vegetables and hand-pulled noodles.</div>
+        <span class="menu-tag">Traditional</span>
+      </div>
+      <div class="menu-item fade-up">
+        <div class="menu-item-icon">🥩</div>
+        <div class="menu-item-name">Specialty Steaks</div>
+        <div class="menu-item-desc">Premium cuts prepared to order, seasoned with Uzbek spice blends for a unique twist on a classic favourite.</div>
+        <span class="menu-tag">Chef's Special</span>
+      </div>
+      <div class="menu-item fade-up">
+        <div class="menu-item-icon">🫓</div>
+        <div class="menu-item-name">Fresh Flatbreads</div>
+        <div class="menu-item-desc">Stone-baked non — the quintessential Uzbek bread — warm and fragrant from the tandoor, perfect with every meal.</div>
+        <span class="menu-tag">Baked Daily</span>
+      </div>
+      <div class="menu-item fade-up">
+        <div class="menu-item-icon">🍱</div>
+        <div class="menu-item-name">Seasonal Salads</div>
+        <div class="menu-item-desc">Crisp, vibrant salads made from locally sourced produce, celebrating the freshness of each season.</div>
+        <span class="menu-tag">Fresh & Local</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section" id="experience">
+  <div class="container">
+    <div class="experience-grid">
+      <div class="fade-up">
+        <p class="section-tag">The Osiyo Experience</p>
+        <h2 class="section-title">A place for every <em>occasion</em></h2>
+        <ul class="features-list">
+          <li>
+            <div class="feature-icon">🎉</div>
+            <div>
+              <div class="feature-title">Banquets & Celebrations</div>
+              <div class="feature-desc">Spacious halls suited for weddings, corporate gatherings, and large family celebrations with full catering service.</div>
+            </div>
+          </li>
+          <li>
+            <div class="feature-icon">👨‍👩‍👧</div>
+            <div>
+              <div class="feature-title">Family Dining</div>
+              <div class="feature-desc">A welcoming atmosphere where families gather to share great food and create lasting memories.</div>
+            </div>
+          </li>
+          <li>
+            <div class="feature-icon">🏛️</div>
+            <div>
+              <div class="feature-title">Uzbek Cultural Décor</div>
+              <div class="feature-desc">Every corner reflects the rich artistic heritage of Uzbekistan — hand-crafted details and vibrant traditional motifs.</div>
+            </div>
+          </li>
+          <li>
+            <div class="feature-icon">⭐</div>
+            <div>
+              <div class="feature-title">5-Star Service</div>
+              <div class="feature-desc">Our team is dedicated to making every guest feel like an honoured visitor, with attentive and warm hospitality.</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="fade-up">
+        <div class="drinks-block">
+          <div class="drinks-title">The Bar</div>
+          <p style="font-size:0.85rem;font-weight:300;color:var(--text-muted);margin-bottom:1.5rem;line-height:1.7;">Complement your meal with a selection of fine beverages — from morning coffees to evening cocktails.</p>
+          <div class="drink-item">
+            <span class="drink-name">Cappuccino</span>
+            <span class="drink-type">Coffee</span>
+          </div>
+          <div class="drink-item">
+            <span class="drink-name">Mojito</span>
+            <span class="drink-type">Cocktail</span>
+          </div>
+          <div class="drink-item">
+            <span class="drink-name">Fresh Juices</span>
+            <span class="drink-type">Non-Alcoholic</span>
+          </div>
+          <div class="drink-item">
+            <span class="drink-name">Green Tea</span>
+            <span class="drink-type">Traditional</span>
+          </div>
+          <div class="drink-item">
+            <span class="drink-name">Signature Cocktails</span>
+            <span class="drink-type">Specialty</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="section location-section" id="location">
+  <div class="container">
+    <p class="section-tag fade-up">Find Us</p>
+    <h2 class="section-title fade-up">Come <em>visit us</em> in Jizzakh</h2>
+    <div class="location-card fade-up">
+      <div class="location-icon">📍</div>
+      <div class="location-address">
+        Zargarlik Street 20A<br>
+        Zargarlik Mahalla<br>
+        Jizzakh, Uzbekistan
+      </div>
+      <a href="https://maps.google.com/?q=Zargarlik+Street+20A+Jizzakh+Uzbekistan" target="_blank" class="hero-cta" style="font-size:0.7rem;">Open in Maps</a>
+      <div class="location-details">
+        <div>
+          <div class="location-detail-label">Phone</div>
+          <div class="location-detail-val">Available on arrival</div>
+        </div>
+        <div>
+          <div class="location-detail-label">Hours</div>
+          <div class="location-detail-val">Open daily</div>
+        </div>
+        <div>
+          <div class="location-detail-label">Reservations</div>
+          <div class="location-detail-val">Walk-ins welcome</div>
+        </div>
+        <div>
+          <div class="location-detail-label">Events</div>
+          <div class="location-detail-val">Banquets available</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Osiyo Grand</div>
+  <div class="footer-sub">Osiyo To'yxonasi &mdash; Jizzakh, Uzbekistan</div>
+  <div class="footer-copy">&copy; 2025 Osiyo Grand. All rights reserved.</div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
